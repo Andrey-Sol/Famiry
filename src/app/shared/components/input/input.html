@@ -1,0 +1,17 @@
+
+<div class="form-control">
+  <div class="form-icon">
+    <img src="/icons/user.svg" width="24" height="24" alt="user">
+  </div>
+  <label>
+    <input
+      class="form-input"
+      type="email"
+      name="email"
+      placeholder="Email"
+      [(ngModel)]="value" required
+      (input)="onValueChange()"
+    >
+  </label>
+</div>
+

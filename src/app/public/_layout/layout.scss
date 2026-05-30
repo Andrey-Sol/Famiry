@@ -1,0 +1,29 @@
+
+.layout {
+  background-image: url("/images/background.png");
+  background-repeat: no-repeat;
+  background-color: #09090F;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  width: 360px;
+  text-align: center;
+}
+
+.form-logo {
+  margin-bottom: 40px;
+}
+
+.form-title {
+  font-size: 24px;
+  margin-bottom: 26px;
+}
+
+form {
+  width: 360px;
+}
