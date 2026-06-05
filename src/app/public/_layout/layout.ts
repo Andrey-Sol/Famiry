@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
-import { Button } from '../../shared/components/button/button';
-// import { InputField } from '../../shared/components/input-field/input-field';
-import { PasswordInput } from '../../shared/components/password-input/password-input';
-import { Input } from '../../shared/components/input/input';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-layout',
+  selector: 'app-public-layout',
   standalone: true,
-  imports: [Input, PasswordInput, Button],
+  imports: [RouterOutlet],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })
-export class Layout {}
+export class PublicLayout {}

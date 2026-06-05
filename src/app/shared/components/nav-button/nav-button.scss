@@ -1,0 +1,22 @@
+
+.nav__button {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.nav__button-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
+}
+
+.nav__button-name {
+  color: #51535D;
+}
+
+.nav__button--active .nav__button-name {
+  color: #FFF;
+}
