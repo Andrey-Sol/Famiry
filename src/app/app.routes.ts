@@ -26,5 +26,5 @@ export const routes: Routes = [
       { path: '**', redirectTo: 'home' },
     ],
   },
-  { path: '**', redirectTo: 'public' },
+  { path: '**', redirectTo: 'home' },
 ];

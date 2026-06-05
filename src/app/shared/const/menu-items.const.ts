@@ -1,4 +1,4 @@
-export interface INavConst {
+export interface IMenu {
   text: string;
   iconUrl: string;
   iconUrlActive: string;
@@ -6,7 +6,7 @@ export interface INavConst {
   id: number;
 }
 
-export const NAV_CONST: INavConst[] = [
+export const MENU_CONST: IMenu[] = [
   {
     text: 'Главная',
     iconUrl: 'icons/home.svg',
