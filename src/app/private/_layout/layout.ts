@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Menu } from '../components/menu/menu';
 
 @Component({
-  selector: 'app-public-layout',
+  selector: 'app-private-layout',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Menu],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })
-export class PublicLayout {}
+export class PrivateLayout {}

@@ -1,0 +1,179 @@
+
+<div class="layout">
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo">
+        <img src="images/logo.png" alt="logo">
+      </div>
+
+      <div class="search">
+        <div class="search__icon">
+          <img src="icons/search.svg" alt="search">
+        </div>
+        <label class="search__label">
+          <input class="search__input" type="text">
+        </label>
+        <div class="search__button">
+          <button type="button">
+            <img src="icons/arrow.svg" alt="arrow">
+          </button>
+        </div>
+      </div>
+
+<!--      <div class="genre">-->
+<!--        <div class="genre__title">Жанр</div>-->
+<!--        <div class="genre__item">-->
+<!--          <label class="genre__label">-->
+<!--            <input class="genre__input" type="radio" value="Боевик" name="genre">-->
+<!--            <span class="genre__input-mark"></span>-->
+<!--            <span>Боевик</span>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div class="genre__item">-->
+<!--          <label class="genre__label">-->
+<!--            <input class="genre__input" type="radio" value="Триллер" name="genre">-->
+<!--            <span class="genre__input-mark"></span>-->
+<!--            <span>Триллер</span>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div class="genre__item">-->
+<!--          <label class="genre__label">-->
+<!--            <input class="genre__input" type="radio" value="Детектив" name="genre">-->
+<!--            <span class="genre__input-mark"></span>-->
+<!--            <span>Детектив</span>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="release">-->
+<!--        <div class="release__title">Дата выхода</div>-->
+<!--        <div class="release__controls">-->
+<!--          <div class="date-control date-from">-->
+<!--            <label class="date-from__label">-->
+<!--              <select class="date-from__input" name="date-from">-->
+<!--                <option value="1999">1999</option>-->
+<!--                <option value="2000">2000</option>-->
+<!--                <option value="2001">2001</option>-->
+<!--              </select>-->
+<!--            </label>-->
+<!--          </div>-->
+<!--          <div class="date-control date-to">-->
+<!--            <label class=date-to__label">-->
+<!--              <input class="date-to__input"-->
+<!--                     type="text"-->
+<!--                     name="date-to"-->
+<!--                     id="">-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="sorting">-->
+<!--        <div class="sorting__title">Сортировать</div>-->
+<!--        <div class="sorting__item">-->
+<!--          <label class="sorting__label">-->
+<!--            <input class="sorting__input" type="radio" value="genre" name="sorting">-->
+<!--            <span class="sorting__input-mark"></span>-->
+<!--            <span>По жанру</span>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div class="sorting__item">-->
+<!--          <label class="sorting__label">-->
+<!--            <input class="sorting__input" type="radio" value="title" name="sorting">-->
+<!--            <span class="sorting__input-mark"></span>-->
+<!--            <span>По названию</span>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--        <div class="sorting__item">-->
+<!--          <label class="sorting__label">-->
+<!--            <input class="sorting__input" type="radio" value="rating" name="sorting">-->
+<!--            <span class="sorting__input-mark"></span>-->
+<!--            <span>По рейтингу</span>-->
+<!--          </label>-->
+<!--        </div>-->
+<!--      </div>-->
+    </aside>
+
+    <div class="content">
+      <header class="header">
+
+        <app-menu></app-menu>
+
+      </header>
+
+      <div class="dashboard">
+
+        <router-outlet></router-outlet>
+
+<!--        <div class="dashboard__title">-->
+<!--          Результаты поиска-->
+<!--        </div>-->
+<!--        <div class="dashboard__subtitle">-->
+<!--          Найдено 10 фильмов-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="films-list">-->
+<!--          <div class="film">-->
+<!--            <div class="film__favorite">-->
+<!--              <div class="film__favorite-icon">-->
+<!--                <img src="images/icons/star-active.svg" alt="star">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="film__image">-->
+<!--              <img src="images/lucifer.png" alt="film cover">-->
+<!--            </div>-->
+<!--            <div class="film__title">Lucifer</div>-->
+<!--            <div class="film__rating">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star.svg" alt="star">-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+<!--          <div class="film">-->
+<!--            <div class="film__favorite">-->
+<!--              <div class="film__favorite-icon">-->
+<!--                <img src="images/icons/star-active.svg" alt="star">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="film__image">-->
+<!--              <img src="images/lucifer.png" alt="film cover">-->
+<!--            </div>-->
+<!--            <div class="film__title">Lucifer</div>-->
+<!--            <div class="film__rating">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star.svg" alt="star">-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+<!--          <div class="film">-->
+<!--            <div class="film__favorite">-->
+<!--              <div class="film__favorite-icon">-->
+<!--                <img src="images/icons/star-active.svg" alt="star">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="film__image">-->
+<!--              <img src="images/lucifer.png" alt="film cover">-->
+<!--            </div>-->
+<!--            <div class="film__title">Lucifer</div>-->
+<!--            <div class="film__rating">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star-active.svg" alt="star-active">-->
+<!--              <img src="images/icons/star.svg" alt="star">-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+
+</div>
