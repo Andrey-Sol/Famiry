@@ -1,0 +1,19 @@
+
+<div class="card">
+  <div class="card__favorite">
+    <div class="card__favorite-icon">
+      @if (movie?.isFavorite) {
+        <img ngSrc="icons/star-active.svg" width="24" height="24" alt="star-active">
+      } @else {
+        <img ngSrc="icons/star.svg" width="24" height="24" alt="star">
+      }
+    </div>
+  </div>
+  <div class="card__image">
+    <img [src]="movie?.posterUrl" alt="film cover">
+  </div>
+  <div class="card__title">{{ movie?.title }}</div>
+
+  <app-rating [value]="movie?.rating"></app-rating>
+
+</div>

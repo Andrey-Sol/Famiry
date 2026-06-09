@@ -1,0 +1,15 @@
+<!--В зависимости от длины массива рисуем нужное количество звёзд-->
+<div class="rating">
+  @for (i of stars(); track i) {
+    <button
+      type="button"
+      class="star"
+      [class.readonly]="readonly"
+      (click)="onClick(i, $event)"
+      (mousemove)="onMove(i, $event)"
+      [attr.aria-label]="'Set rating ' + (i + 1)"
+    >
+      <img ngSrc="icons/star-active.svg" width="24" height="24" alt="star-active">
+    </button>
+  }
+</div>
