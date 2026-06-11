@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Menu } from '../components/menu/menu';
+import { GENRES, IGenre } from '../../shared/const/genres.const';
 
 @Component({
   selector: 'app-private-layout',
@@ -9,4 +10,6 @@ import { Menu } from '../components/menu/menu';
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })
-export class PrivateLayout {}
+export class PrivateLayout {
+  genres: IGenre[] = GENRES;
+}

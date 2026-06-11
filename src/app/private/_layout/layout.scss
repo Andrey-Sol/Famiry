@@ -1,8 +1,5 @@
 
 .layout {
-  background-image: url("/images/background.png");
-  background-repeat: no-repeat;
-  background-color: #09090F;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -10,7 +7,7 @@
 
 .container {
   display: flex;
-  max-width: 1200px;
+  width: 1200px;
   margin: 0 auto;
 }
 
@@ -69,6 +66,70 @@
 }
 
 .dashboard {
+  height: 50%;
   padding-left: 48px;
   padding-right: 48px;
+}
+
+.genre {
+  margin-bottom: 27px;
+}
+
+.genre__title {
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+
+.genre__item {
+  margin-bottom: 12px;
+}
+
+.genre__item:last-child {
+  margin-bottom: 0;
+}
+
+.genre__label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.genre__label span {
+  color: #A0A0A0;
+}
+
+.genre__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.genre__input-mark {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid rgba(118, 118, 128, 0.12);
+  background-color: rgba(118, 118, 128, 0.12);
+  margin-right: 11px;
+}
+
+.genre__input-mark::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background-color: #FFC837;
+  border-radius: 50%;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.genre__input:checked + .genre__input-mark::after {
+  opacity: 1;
+  transform: scale(1);
 }
