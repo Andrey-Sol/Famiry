@@ -6,6 +6,11 @@ html, body {
 
 body {
   margin: 0 !important;
+  background-image: url("/images/background.png");
+  background-repeat: no-repeat;
+  background-color: #09090F;
+  width: 100vw;
+  height: 100vh;
 }
 
 body * {

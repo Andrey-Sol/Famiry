@@ -3,14 +3,12 @@
   Результаты поиска
 </div>
 <div class="home__subtitle">
-  Найдено 10 фильмов
+  Найдено {{ movies.length }} фильмов
 </div>
 
 
-<div class="cards-list">
-
+<div class="home__cards">
   @for (movie of movies; track movie.id) {
     <app-card [movie]="movie"></app-card>
   }
-
 </div>

@@ -1,1 +1,23 @@
-<p>favorites works!</p>
+
+<div class="favorites__title">
+  Избранное
+</div>
+<div class="favorites__subtitle">
+  @if (favorites.length > 0) {
+    Вы добавили {{ favorites.length }} фильмов
+  } @else {
+    Пока тут нет фильмов. Добавьте фильмы в избранное из каталога
+  }
+</div>
+
+@if (favorites.length > 0) {
+  <div class="favorites__cards">
+    @for (favorite of favorites; track favorite.id) {
+      <app-card [movie]="favorite"></app-card>
+    }
+  </div>
+} @else {
+  <div class="favorites__empty">
+    <button type="button" routerLink="/private">В каталог</button>
+  </div>
+}

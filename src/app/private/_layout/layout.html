@@ -20,30 +20,20 @@
         </div>
       </div>
 
-<!--      <div class="genre">-->
-<!--        <div class="genre__title">Жанр</div>-->
-<!--        <div class="genre__item">-->
-<!--          <label class="genre__label">-->
-<!--            <input class="genre__input" type="radio" value="Боевик" name="genre">-->
-<!--            <span class="genre__input-mark"></span>-->
-<!--            <span>Боевик</span>-->
-<!--          </label>-->
-<!--        </div>-->
-<!--        <div class="genre__item">-->
-<!--          <label class="genre__label">-->
-<!--            <input class="genre__input" type="radio" value="Триллер" name="genre">-->
-<!--            <span class="genre__input-mark"></span>-->
-<!--            <span>Триллер</span>-->
-<!--          </label>-->
-<!--        </div>-->
-<!--        <div class="genre__item">-->
-<!--          <label class="genre__label">-->
-<!--            <input class="genre__input" type="radio" value="Детектив" name="genre">-->
-<!--            <span class="genre__input-mark"></span>-->
-<!--            <span>Детектив</span>-->
-<!--          </label>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="genre">
+        <div class="genre__title">Жанр</div>
+
+        @for (genre of genres; track genre.id) {
+          <div class="genre__item">
+            <label class="genre__label">
+              <input class="genre__input" type="radio" [value]="genre.slug" name="genre">
+              <span class="genre__input-mark"></span>
+              <span>{{ genre.name }}</span>
+            </label>
+          </div>
+        }
+
+      </div>
 
 <!--      <div class="release">-->
 <!--        <div class="release__title">Дата выхода</div>-->
