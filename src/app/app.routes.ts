@@ -12,7 +12,7 @@ export const routes: Routes = [
     path: 'public',
     component: PublicLayout,
     children: [
-      { path: 'log-in', component: LogIn },
+      { path: 'log-in', component: LogIn, title: 'Авторизация' },
       { path: '**', redirectTo: 'log-in' },
     ],
   },
@@ -21,8 +21,8 @@ export const routes: Routes = [
     component: PrivateLayout,
     canActivate: [authGuard],
     children: [
-      { path: 'home', component: Home },
-      { path: 'favorites', component: Favorites },
+      { path: 'home', component: Home, title: 'Главная' },
+      { path: 'favorites', component: Favorites, title: 'Избранное' },
       { path: '**', redirectTo: 'home' },
     ],
   },

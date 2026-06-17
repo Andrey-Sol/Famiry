@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
-import { IMovie } from '../../../shared/models/movie.model';
+import { Component, input, InputSignal } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { Rating } from '../rating/rating';
+import { IMovie } from '../../../shared/models/movie.model';
 
 @Component({
   selector: 'app-card',
@@ -10,5 +10,5 @@ import { Rating } from '../rating/rating';
   styleUrl: './card.scss',
 })
 export class Card {
-  @Input() movie: IMovie | null = null;
+  movie: InputSignal<IMovie | undefined> = input();
 }

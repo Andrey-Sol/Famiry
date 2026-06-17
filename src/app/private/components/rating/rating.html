@@ -4,7 +4,7 @@
     <button
       type="button"
       class="star"
-      [class.readonly]="readonly"
+      [class.readonly]="readonly()"
       (click)="onClick(i, $event)"
       (mousemove)="onMove(i, $event)"
       [attr.aria-label]="'Set rating ' + (i + 1)"
