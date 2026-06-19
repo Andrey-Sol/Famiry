@@ -1,26 +1,28 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Menu } from '../components/menu/menu';
-import { GENRES, IGenre } from '../../shared/const/genres.const';
+import { IGenre } from '../../shared/const/genres.const';
 import { Title } from '@angular/platform-browser';
-import { delay, tap } from 'rxjs';
+import { delay, Observable, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { StoreService } from '../../shared/services/store.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-private-layout',
   standalone: true,
-  imports: [RouterOutlet, Menu],
+  imports: [RouterOutlet, Menu, AsyncPipe],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })
 export class PrivateLayout implements OnInit {
-  genres: IGenre[] = GENRES;
-  title = '';
-
   private _router = inject(Router);
-  private _activatedRoute = inject(ActivatedRoute);
   private _titleService = inject(Title);
+  private _store: StoreService = inject(StoreService);
   private _destroyRef = inject(DestroyRef);
+
+  genres$: Observable<IGenre[]> = this._store.genres$.pipe(delay(100));
+  title = '';
 
   ngOnInit(): void {
     this._router.events.pipe(
