@@ -4,6 +4,7 @@ import { IMovie } from '../../../shared/models/movie.model';
 import { delay, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { StoreService } from '../../../shared/services/store.service';
+import { MOVIES } from '../../../shared/const/fake-films.const';
 
 @Component({
   selector: 'app-home',
@@ -16,5 +17,7 @@ export class Home implements OnInit {
 
   protected readonly movies$: Observable<IMovie[]> = this._store.movies$.pipe(delay(100));
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._store.updateData({ movies: MOVIES });
+  }
 }

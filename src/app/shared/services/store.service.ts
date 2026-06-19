@@ -38,20 +38,16 @@ export class StoreService {
     ...STORE_DEFAULT_VALUE,
   });
 
-  readonly movies$ = this.storeSubject.pipe(
-    map((state) => state.movies));
+  readonly movies$ = this.storeSubject.pipe(map((state) => state.movies));
 
-  readonly favorites$ = this.storeSubject.pipe(
-    map((state) => state.favorites));
+  readonly favorites$ = this.storeSubject.pipe(map((state) => state.favorites));
 
-  readonly genres$ = this.storeSubject.pipe(
-    map((state) => state.genres));
+  readonly genres$ = this.storeSubject.pipe(map((state) => state.genres));
 
-  readonly filters$ = this.storeSubject.pipe(
-    map((state) => state.filters));
+  readonly filters$ = this.storeSubject.pipe(map((state) => state.filters));
 
-  public updateData(data: IAppStore): void {
-    const updatedData: IAppStore = { ...this.storeSubject, ...data };
+  public updateData(data: Partial<IAppStore>): void {
+    const updatedData: IAppStore = { ...this.storeSubject.value, ...data };
     this.storeSubject.next(updatedData);
   }
 }

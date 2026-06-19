@@ -5,6 +5,7 @@ import { RouterLink } from '@angular/router';
 import { delay, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { StoreService } from '../../../shared/services/store.service';
+import { FAVORITES } from '../../../shared/const/fake-favorites.const';
 
 @Component({
   selector: 'app-favorites',
@@ -17,5 +18,7 @@ export class Favorites implements OnInit {
 
   protected readonly favorites$: Observable<IMovie[]> = this._store.favorites$.pipe(delay(100));
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._store.updateData({ favorites: FAVORITES });
+  }
 }

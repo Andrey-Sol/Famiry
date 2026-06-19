@@ -1,7 +1,7 @@
 import { Component, DestroyRef, inject, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { Menu } from '../components/menu/menu';
-import { IGenre } from '../../shared/const/genres.const';
+import { GENRES, IGenre } from '../../shared/const/genres.const';
 import { Title } from '@angular/platform-browser';
 import { delay, Observable, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -33,6 +33,8 @@ export class PrivateLayout implements OnInit {
         }
       }),
       takeUntilDestroyed(this._destroyRef),
-    );
+    ).subscribe();
+
+    this._store.updateData({ genres: GENRES });
   }
 }
