@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, output, OutputEmitterRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,8 +10,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class Input {
   value: string = '';
-
-  @Output() controlValue: EventEmitter<string> = new EventEmitter<string>();
+  controlValue: OutputEmitterRef<string> = output();
 
   onValueChange() {
     this.controlValue.emit(this.value);

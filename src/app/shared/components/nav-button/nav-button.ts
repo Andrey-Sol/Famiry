@@ -2,11 +2,11 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
-  EventEmitter,
   inject,
-  Input,
+  input,
   OnDestroy,
-  Output,
+  output,
+  OutputEmitterRef,
 } from '@angular/core';
 import { NgClass, NgOptimizedImage } from '@angular/common';
 
@@ -23,11 +23,12 @@ export class NavButton implements AfterViewInit, OnDestroy {
   type = 'button';
   isActive = false;
 
-  @Input() text = '';
-  @Input() iconUrl = '';
-  @Input() iconUrlActive = '';
-  @Input() disabled = false;
-  @Output() clicked: EventEmitter<Event> = new EventEmitter<Event>();
+  text = input('');
+  iconUrl = input('');
+  iconUrlActive = input('');
+  disabled = input(false);
+
+  clicked: OutputEmitterRef<Event> = output();
 
   onClick(event: Event): void {
     if (!this.disabled) {

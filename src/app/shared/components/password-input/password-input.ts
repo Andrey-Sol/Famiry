@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, output, OutputEmitterRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 export enum EPasswordInputIcons {
@@ -19,8 +19,7 @@ export class PasswordInput {
   buttonIcon = EPasswordInputIcons.Closed;
 
   value: string = '';
-
-  @Output() controlValue: EventEmitter<string> = new EventEmitter<string>();
+  controlValue: OutputEmitterRef<string> = output();
 
   onInput(event: Event): void {
     const target = event.target as HTMLInputElement;

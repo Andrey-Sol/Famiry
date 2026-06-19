@@ -1,14 +1,13 @@
 
-<div class="home__title">
-  Результаты поиска
-</div>
 <div class="home__subtitle">
-  Найдено {{ movies.length }} фильмов
+  @if (movies$ | async; as movies) {
+    Найдено {{ movies.length }} фильмов
+  }
 </div>
 
 
 <div class="home__cards">
-  @for (movie of movies; track movie.id) {
+  @for (movie of movies$ | async; track movie.id) {
     <app-card [movie]="movie"></app-card>
   }
 </div>
