@@ -7,11 +7,12 @@ import { delay, Observable, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { StoreService } from '../../shared/services/store.service';
 import { AsyncPipe } from '@angular/common';
+import { Input } from '../../shared/components/input/input';
 
 @Component({
   selector: 'app-private-layout',
   standalone: true,
-  imports: [RouterOutlet, Menu, AsyncPipe],
+  imports: [RouterOutlet, Menu, AsyncPipe, Input],
   templateUrl: './layout.html',
   styleUrl: './layout.scss',
 })
@@ -25,15 +26,17 @@ export class PrivateLayout implements OnInit {
   title = '';
 
   ngOnInit(): void {
-    this._router.events.pipe(
-      delay(100),
-      tap((event) => {
-        if (event instanceof NavigationEnd) {
-          this.title = this._titleService.getTitle();
-        }
-      }),
-      takeUntilDestroyed(this._destroyRef),
-    ).subscribe();
+    this._router.events
+      .pipe(
+        delay(100),
+        tap((event) => {
+          if (event instanceof NavigationEnd) {
+            this.title = this._titleService.getTitle();
+          }
+        }),
+        takeUntilDestroyed(this._destroyRef),
+      )
+      .subscribe();
 
     this._store.updateData({ genres: GENRES });
   }

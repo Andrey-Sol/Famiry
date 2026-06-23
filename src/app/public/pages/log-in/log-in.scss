@@ -1,6 +1,22 @@
 
 .login-container {}
 
+.form-error {
+  background: #D83200;
+  border-radius: 16px;
+  padding: 7px;
+  text-align: center;
+  margin-top: 30px;
+  height: 32px;
+  box-sizing: border-box;
+}
+
+.form-error-block {
+  background: transparent;
+  height: 32px;
+  margin-top: 30px;
+}
+
 .login {
   width: 360px;
   text-align: center;

@@ -44,7 +44,9 @@ export class StoreService {
 
   readonly genres$ = this.storeSubject.pipe(map((state) => state.genres));
 
-  readonly filters$ = this.storeSubject.pipe(map((state) => state.filters));
+  readonly filters$ = this.storeSubject.pipe(
+    map((state) => state.filters)
+  );
 
   public updateData(data: Partial<IAppStore>): void {
     const updatedData: IAppStore = { ...this.storeSubject.value, ...data };

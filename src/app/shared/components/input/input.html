@@ -1,17 +1,19 @@
 
 <div class="form-control">
   <div class="form-icon">
-    <img src="/icons/user.svg" width="24" height="24" alt="user">
+    @if (prefixIconUrl()) {
+      <img [src]="prefixIconUrl()" width="24" height="24" alt="user">
+    }
   </div>
-  <label>
+  <label class="form-label">
     <input
       class="form-input"
-      type="email"
-      name="email"
-      placeholder="Email"
-      [(ngModel)]="value" required
-      (input)="onValueChange()"
+      [type]="type()"
+      [placeholder]="placeholder()"
+      (input)="handleInput($event)"
     >
   </label>
+  @if (postfixIconUrl()) {
+    <img [src]="postfixIconUrl()" width="24" height="24" alt="user">
+  }
 </div>
-
