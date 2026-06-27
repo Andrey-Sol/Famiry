@@ -46,7 +46,14 @@ export class StoreService {
 
   readonly filters$ = this.storeSubject.pipe(map((state) => state.filters));
 
-  public updateData(data: Partial<IAppStore>): void {
+  public setValue<K extends keyof IAppStore>(key: K, value: IAppStore[K]): void {
+    this.storeSubject.next({
+      ...this.storeSubject.getValue(),
+      [key]: value,
+    });
+  }
+
+  public updateData(data: any): void {
     const updatedData: IAppStore = { ...this.storeSubject.value, ...data };
     this.storeSubject.next(updatedData);
   }

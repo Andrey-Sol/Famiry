@@ -1,0 +1,21 @@
+
+<!--<div class="radio__item">-->
+<!--  <label class="radio__label">-->
+<!--    <input class="radio__input" type="radio" [value]="value" name="genre">-->
+<!--    <span class="radio__input-mark"></span>-->
+<!--    <span>{{ name() }}</span>-->
+<!--  </label>-->
+<!--</div>-->
+
+<label class="radio__label">
+  <input
+    class="radio__input"
+    type="radio"
+    [name]="name()"
+    [value]="value()"
+    [checked]="isChecked()"
+    [disabled]="disabled"
+    (change)="handleInput($event)">
+  <span class="radio__input-mark"></span>
+  <span>{{ title() }}</span>
+</label>

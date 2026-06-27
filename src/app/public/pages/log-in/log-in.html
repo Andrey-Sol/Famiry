@@ -1,19 +1,36 @@
 
 <div class="login-container">
+
   <div class="login">
     <div class="login__logo">
       <img src="/images/logo.png" alt="Logo">
     </div>
     <div class="login__title">Вход</div>
-    <form class="login__form">
+    <form class="login__form" [formGroup]="form">
 
-      <app-input></app-input>
+      <app-input prefixIconUrl="/icons/user.svg" formControlName="email"></app-input>
 
-      <app-password-input></app-password-input>
+      <app-password-input formControlName="password"></app-password-input>
 
-      <app-button>
+      <app-button [disabled]="!isFormValid()">
         <span>Войти</span>
       </app-button>
+
+      @if (form.controls.email.invalid && form.controls.email.touched) {
+        <div class="form-error">
+          <span>Введите корректный email</span>
+        </div>
+      } @else {
+        <div class="form-error-block"></div>
+      }
+
+      @if (form.controls.password.invalid && form.controls.password.touched) {
+        <div class="form-error">
+          <span>Введите пароль</span>
+        </div>
+      } @else {
+        <div class="form-error-block"></div>
+      }
 
     </form>
   </div>
