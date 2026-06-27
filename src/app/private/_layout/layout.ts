@@ -38,6 +38,7 @@ export class PrivateLayout implements OnInit {
 
   ngOnInit(): void {
     this._setFormValueToStore();
+    this._setGenreValueToStore();
     this._router.events
       .pipe(
         delay(100),
@@ -59,21 +60,27 @@ export class PrivateLayout implements OnInit {
       takeUntilDestroyed(this._destroyRef),
     ).subscribe();
 
-    // const genre$ = this._store.filters$.pipe(
-    //   map(filters => filters.genre),
-    //   tap((g) => console.log(g))
-    // )
-    //
-    // let genre = this._store.filters$.;
-    // this.genreSelect.controls['genre'].setValue(genre$)
-
+    this._store.filters$.pipe(
+      tap((value) => this._store.setValue('filters', value)),
+      takeUntilDestroyed(this._destroyRef),
+    );
   }
 
-  private _setFormValueToStore(): void {
+  private _setGenreValueToStore(): void {
     this.genreSelect.controls['genre'].valueChanges
       .pipe(
         debounceTime(500),
         tap((value) => this._store.updateData({ filters: { genre: value } })),
+        takeUntilDestroyed(this._destroyRef),
+      )
+      .subscribe();
+  }
+
+  private _setFormValueToStore(): void {
+    this.searchForm.controls['search'].valueChanges
+      .pipe(
+        debounceTime(500),
+        tap((value) => this._store.updateData({ filters: { name: value } })),
         takeUntilDestroyed(this._destroyRef),
       )
       .subscribe();

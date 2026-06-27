@@ -17,17 +17,18 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class Radio implements ControlValueAccessor {
   name = input<string>('');
   title = input<string>('');
-  value = input<number>(0);
+  // value = input<number>(0);
   localValue = signal<number>(0);
 
   // checked: boolean = false;
+  private value = '';
   disabled: boolean = false;
 
   private onChange: (value: string) => void = () => {};
   private onTouched: () => void = () => {};
 
   writeValue(value: any): void {
-    this.localValue.set(this.value());
+    this.value = value ?? 0;
   }
 
   registerOnChange(fn: (value: string) => void): void {
@@ -40,5 +41,13 @@ export class Radio implements ControlValueAccessor {
 
   setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
+  }
+
+  handleInput(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const value = target.value;
+    this.value = value;
+    this.onChange(value);
+    this.onTouched();
   }
 }
