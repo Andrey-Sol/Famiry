@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { IMovie } from '../../../shared/models/movie.model';
-import { FAVORITES } from '../../../shared/const/fake-favorites.const';
 import { Card } from '../../components/card/card';
 import { RouterLink } from '@angular/router';
-import { delay, Observable, of } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { StoreService } from '../../../shared/services/store.service';
+import { FAVORITES } from '../../../shared/const/fake-favorites.const';
 
 @Component({
   selector: 'app-favorites',
@@ -12,6 +13,12 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './favorites.html',
   styleUrl: './favorites.scss',
 })
-export class Favorites {
-  protected readonly favorites$: Observable<IMovie[]> = of(FAVORITES).pipe(delay(100));
+export class Favorites implements OnInit {
+  private _store: StoreService = inject(StoreService);
+
+  protected readonly favorites$: Observable<IMovie[]> = this._store.favorites$.pipe(delay(100));
+
+  ngOnInit(): void {
+    this._store.updateData({ favorites: FAVORITES });
+  }
 }

@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Card } from '../../components/card/card';
-import { MOVIES } from '../../../shared/const/fake-films.const';
 import { IMovie } from '../../../shared/models/movie.model';
-import { delay, Observable, of } from 'rxjs';
+import { delay, Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { StoreService } from '../../../shared/services/store.service';
+import { MOVIES } from '../../../shared/const/fake-films.const';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,12 @@ import { AsyncPipe } from '@angular/common';
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
-export class Home {
-  protected readonly movies$: Observable<IMovie[]> = of(MOVIES).pipe(delay(100));
+export class Home implements OnInit {
+  private _store: StoreService = inject(StoreService);
+
+  protected readonly movies$: Observable<IMovie[]> = this._store.movies$.pipe(delay(100));
+
+  ngOnInit(): void {
+    this._store.updateData({ movies: MOVIES });
+  }
 }

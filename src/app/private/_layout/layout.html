@@ -23,7 +23,7 @@
       <div class="genre">
         <div class="genre__title">Жанр</div>
 
-        @for (genre of genres; track genre.id) {
+        @for (genre of genres$ | async; track genre.id) {
           <div class="genre__item">
             <label class="genre__label">
               <input class="genre__input" type="radio" [value]="genre.slug" name="genre">
