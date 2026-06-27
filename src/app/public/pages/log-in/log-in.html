@@ -12,7 +12,7 @@
 
       <app-password-input formControlName="password"></app-password-input>
 
-      <app-button>
+      <app-button [disabled]="!isFormValid()">
         <span>Войти</span>
       </app-button>
 

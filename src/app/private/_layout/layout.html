@@ -6,9 +6,9 @@
         <img src="images/logo.png" alt="logo">
       </div>
 
-      <div class="search">
+      <form [formGroup]="searchForm" class="search">
 
-        <app-input
+        <app-input formControlName="search"
           prefixIconUrl="icons/search.svg"
           postfixIconUrl="icons/arrow.svg"
           placeholder="Поиск"
@@ -25,45 +25,40 @@
 <!--            <img src="icons/arrow.svg" alt="arrow">-->
 <!--          </button>-->
 <!--        </div>-->
-      </div>
+      </form>
 
-      <div class="genre">
+      <form [formGroup]="genreSelect" class="genre">
         <div class="genre__title">Жанр</div>
 
         @for (genre of genres$ | async; track genre.id) {
-          <div class="genre__item">
-            <label class="genre__label">
-              <input class="genre__input" type="radio" [value]="genre.slug" name="genre">
-              <span class="genre__input-mark"></span>
-              <span>{{ genre.name }}</span>
-            </label>
+          <div class="radio__item">
+
+            <app-radio formControlName="genre" [value]="genre.id" [title]="genre.name" name="genre"></app-radio>
+
           </div>
         }
 
-      </div>
+      </form>
 
-<!--      <div class="release">-->
-<!--        <div class="release__title">Дата выхода</div>-->
-<!--        <div class="release__controls">-->
-<!--          <div class="date-control date-from">-->
-<!--            <label class="date-from__label">-->
-<!--              <select class="date-from__input" name="date-from">-->
-<!--                <option value="1999">1999</option>-->
-<!--                <option value="2000">2000</option>-->
-<!--                <option value="2001">2001</option>-->
-<!--              </select>-->
-<!--            </label>-->
-<!--          </div>-->
-<!--          <div class="date-control date-to">-->
-<!--            <label class=date-to__label">-->
-<!--              <input class="date-to__input"-->
-<!--                     type="text"-->
-<!--                     name="date-to"-->
-<!--                     id="">-->
-<!--            </label>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--      </div>-->
+      <div class="release">
+        <div class="release__title">Дата выхода</div>
+        <div class="release__controls">
+          <div class="date-control date-from">
+            <label class="date-from__label">
+              <select class="date-from__input" name="date-from">
+                <option value="1999">1999</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+              </select>
+            </label>
+          </div>
+          <div class="date-control date-to">
+            <label class="date-to__label">
+              <input class="date-to__input" type="text" name="date-to" id="">
+            </label>
+          </div>
+        </div>
+      </div>
 
 <!--      <div class="sorting">-->
 <!--        <div class="sorting__title">Сортировать</div>-->

@@ -1,8 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
 import { Input } from '../../../shared/components/input/input';
 import { PasswordInput } from '../../../shared/components/password-input/password-input';
 import { Button } from '../../../shared/components/button/button';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { email } from '@angular/forms/signals';
 import { filter, Subscription } from 'rxjs';
 
@@ -43,6 +48,9 @@ export class LogIn implements OnInit, OnDestroy {
   protected readonly email = email;
 
   formSub!: Subscription;
+  formStatus!: Subscription;
+
+  isFormValid = signal(false);
 
   ngOnInit(): void {
     this.formSub = this.form.valueChanges
@@ -50,11 +58,27 @@ export class LogIn implements OnInit, OnDestroy {
       .subscribe((filteredValues) => {
         console.log('Валидные данные формы:', filteredValues);
       });
+
+    this.formStatus = this.form.statusChanges.subscribe(() => {
+      this.updateFormStatus();
+    });
+    this.updateFormStatus();
+  }
+
+  private updateFormStatus() {
+    if (this.form.valid) {
+      this.isFormValid.set(true);
+    } else {
+      this.isFormValid.set(false);
+    }
   }
 
   ngOnDestroy() {
     if (this.formSub) {
       this.formSub.unsubscribe();
+    }
+    if (this.formStatus) {
+      this.formStatus.unsubscribe();
     }
   }
 }

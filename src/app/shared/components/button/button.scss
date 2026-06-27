@@ -10,3 +10,8 @@ button {
   padding: 16px 49px;
   cursor: pointer;
 }
+
+button:disabled {
+  background: #caa44f;
+  cursor: not-allowed;
+}

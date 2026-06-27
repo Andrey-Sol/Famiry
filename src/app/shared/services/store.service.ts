@@ -48,7 +48,7 @@ export class StoreService {
     map((state) => state.filters)
   );
 
-  public updateData(data: Partial<IAppStore>): void {
+  public updateData(data: any): void {
     const updatedData: IAppStore = { ...this.storeSubject.value, ...data };
     this.storeSubject.next(updatedData);
   }
