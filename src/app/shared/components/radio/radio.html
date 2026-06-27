@@ -8,7 +8,14 @@
 <!--</div>-->
 
 <label class="radio__label">
-  <input class="radio__input" type="radio" [name]="name()" (input)="handleInput($event)">
+  <input
+    class="radio__input"
+    type="radio"
+    [name]="name()"
+    [value]="value()"
+    [checked]="isChecked()"
+    [disabled]="disabled"
+    (change)="handleInput($event)">
   <span class="radio__input-mark"></span>
   <span>{{ title() }}</span>
 </label>

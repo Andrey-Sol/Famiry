@@ -33,7 +33,12 @@
         @for (genre of genres$ | async; track genre.id) {
           <div class="radio__item">
 
-            <app-radio formControlName="genre" [title]="genre.name" name="genre"></app-radio>
+            <app-radio
+              formControlName="genre"
+              [title]="genre.name"
+              [value]="genre.id"
+              name="genre"
+            ></app-radio>
 
           </div>
         }

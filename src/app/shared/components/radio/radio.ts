@@ -1,4 +1,4 @@
-import { Component, forwardRef, input, signal } from '@angular/core';
+import { Component, forwardRef, input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
@@ -17,26 +17,25 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class Radio implements ControlValueAccessor {
   name = input<string>('');
   title = input<string>('');
-  // value = input<number>(0);
-  localValue = signal<number>(0);
+  value = input<number>(0); // Добавляем значение, которое будет передаваться в форму
+  // localValue = signal<number>(0);
 
-  // checked: boolean = false;
-  private value = '';
+  private currentValue: number | null = null; // Текущее значение формы
   disabled: boolean = false;
 
-  private onChange: (value: string) => void = () => {};
+  private onChange: (value: number | null) => void = () => {}; // Изменяем тип
   private onTouched: () => void = () => {};
 
-  writeValue(value: any): void {
-    this.value = value ?? 0;
+  writeValue(value: number | null): void {
+    this.currentValue = value; // Сохраняем значение из формы
   }
 
-  registerOnChange(fn: (value: string) => void): void {
-    this.onChange = fn;
+  registerOnChange(fn: (value: number | null) => void): void {
+    this.onChange = fn; // Сохраняем callback
   }
 
   registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
+    this.onTouched = fn; // Сохраняем callback
   }
 
   setDisabledState(isDisabled: boolean): void {
@@ -45,9 +44,15 @@ export class Radio implements ControlValueAccessor {
 
   handleInput(event: Event): void {
     const target = event.target as HTMLInputElement;
-    const value = target.value;
-    this.value = value;
-    this.onChange(value);
-    this.onTouched();
+    if (target.checked) {
+      this.currentValue = this.value(); // Берем значение из input signal
+      this.onChange(this.currentValue); // ПЕРЕДАЕМ в форму
+      this.onTouched(); // Отмечаем как touched
+    }
+  }
+
+  // Метод для проверки, выбрана ли эта радио-кнопка
+  isChecked(): boolean {
+    return this.currentValue === this.value();
   }
 }
